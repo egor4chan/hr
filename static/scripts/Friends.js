@@ -17,7 +17,7 @@ function createFriendBlock(id, username='user') {;
 
     let userImage = document.createElement('div');
     userImage.setAttribute('class', 'user-image');
-    userImage.innerHTML = String(id)[0];
+    userImage.innerHTML = String(username)[0].toUpperCase();
     
     block.appendChild(userID);
     block.appendChild(userNickname)
