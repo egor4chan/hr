@@ -58,6 +58,7 @@ class Data:
             cursor.execute(select_all_rows)
 
             rows = cursor.fetchall()
+
             return rows
         
     def GetReferralsCount(self, user_id):
