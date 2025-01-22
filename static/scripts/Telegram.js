@@ -1,16 +1,17 @@
 
 var WebApp = window.Telegram.WebApp;
-alert('Webapp')
 var userTelegamID = WebApp.initDataUnsafe.user.id;
-alert(`UID is working: ${userTelegamID}`)
 //var userReferID = WebApp.initDataUnsafe.start_param;
-var personalLink = `t.me/share/url?url=t.me/hopterbigbot?startapp=${userTelegamID}`;
-alert(`Perslink is working: ${personalLink}`)
+var personalLink = `https://t.me/share/url?url=t.me/hopterbigbot?startapp=${userTelegamID}`;
 
+function copyLink() {
+    WebApp.HapticFeedback.impactOccurred('light');
+    navigator.clipboard.writeText(personalLink);
+}
 
 function getInvite() {
     WebApp.HapticFeedback.impactOccurred('light');
-    WebApp.openLink(personalLink);
+    window.location.href = personalLink;
 }
 
 
