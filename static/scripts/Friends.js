@@ -1,5 +1,5 @@
-//var WebApp = window.Telegram.WebApp;
-//var userTelegamID = WebApp.initDataUnsafe.user.id;
+var WebApp = window.Telegram.WebApp;
+var userTelegamID = WebApp.initDataUnsafe.user.id;
 let userFriendsList = []
 
 function createFriendBlock(id, username='user') {;
@@ -35,7 +35,7 @@ function createNothingBlock() {
 function getUserFriends() {
     httpRequest = new XMLHttpRequest();
     httpRequest.open('POST', 'getfriends');
-    var data = JSON.stringify({"user_id": 5247769901});
+    var data = JSON.stringify({"user_id": userTelegamID});
 
     httpRequest.send(data) 
      
