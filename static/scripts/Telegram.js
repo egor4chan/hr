@@ -1,3 +1,4 @@
+alert('s')
 var WebApp = window.Telegram.WebApp;
 
 var userTelegamID = WebApp.initDataUnsafe.user.id;
@@ -5,8 +6,6 @@ var userTelegamID = WebApp.initDataUnsafe.user.id;
 var personalLink = 'https://t.me/share/url?url=t.me/hopterbigbot?startapp=' + userTelegamID;
 
 document.getElementById('invite').setAttribute('href', personalLink)
-
-alert(personalLink)
 
 function vibration() {
     var WebApp = window.Telegram.WebApp;
