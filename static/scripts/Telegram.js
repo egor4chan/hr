@@ -1,5 +1,6 @@
 var WebApp = window.Telegram.WebApp;
 var userTelegamID = WebApp.initDataUnsafe.user.id;
+var userUsername = WebApp.initDataUnsafe.user.username;
 var userReferID = WebApp.initDataUnsafe.start_param;
 var personalLink = `https://t.me/share/url?url=t.me/hopterbigbot?startapp=${userTelegamID}`;
 
@@ -20,7 +21,7 @@ function auth() {
 
     httpRequest = new XMLHttpRequest();
     httpRequest.open('POST', 'auth');
-    var data = JSON.stringify({"user_id": userTelegamID, "refer_id": userReferID});
+    var data = JSON.stringify({"user_id": userTelegamID, "refer_id": userReferID, "username": userUsername});
     httpRequest.send(data);
 }
 

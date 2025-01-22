@@ -19,12 +19,20 @@ def auth_user():
     try:
         user_id = int(req['user_id'])
         refer_id = int(req['refer_id'])
-        data.Auth(user_id, refer_id)
+        username = req['username']
+        
+        data.Auth(user_id, username, refer_id)
         return 'True'
     except:
         user_id = int(req['user_id'])
         refer_id = 0
-        data.Auth(user_id, refer_id)
+
+        if req['username']:
+            username = req['username']
+        else:
+            username = 'user'
+
+        data.Auth(user_id, username, refer_id)
         return 'False'
     
 @app.route('/getfriends', methods=['POST'])
