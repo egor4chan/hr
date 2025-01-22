@@ -1,4 +1,3 @@
-
 var WebApp = window.Telegram.WebApp;
 var userTelegamID = WebApp.initDataUnsafe.user.id;
 var userReferID = WebApp.initDataUnsafe.start_param;

@@ -68,5 +68,18 @@ class Data:
             rows = cursor.fetchall()
             return len(rows)
             
+
+    def DeleteAll(self):
+        try:
+            with self.connection.cursor() as cursor:
+                insert_query = f"DELETE FROM `data` WHERE user_id = "
+                cursor.execute(insert_query)
+                self.connection.commit()
+                self.connection.close()
+                return True
+        except:
+            print('FALSE')
+            return False
+
 data = Data()
 data.PrintAllData()
