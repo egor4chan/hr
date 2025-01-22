@@ -14,7 +14,7 @@ class Data:
         
     def CreateDataTable(self):
         with self.connection.cursor() as cursor:
-            create_table_query = "CREATE TABLE `data1` (user_id varchar(32) UNIQUE, username varchar(32), refer_id varchar(32), balance varchar(32))"
+            create_table_query = "CREATE TABLE `data6` (user_id varchar(32) UNIQUE, username tinytext(20), refer_id varchar(32), balance varchar(32))"
 
             cursor.execute(create_table_query)
             print('Success')
@@ -22,7 +22,7 @@ class Data:
     def Auth(self, user_id, username, refer_id):
         try:
             with self.connection.cursor() as cursor:
-                insert_query = f"INSERT INTO `data1` (user_id, username, refer_id, balance) VALUES ({user_id}, {username}, {refer_id}, 0);"
+                insert_query = f"INSERT INTO `data6` (user_id, username, refer_id, balance) VALUES ({user_id}, '{username}', {refer_id}, 0);"
                 cursor.execute(insert_query)
                 self.connection.commit()
                 return True
@@ -32,7 +32,7 @@ class Data:
     # Возвращает False если рефера нет, возвращает рефера, если он есть
     def GetUserRefer(self, user_id):
         with self.connection.cursor() as cursor:
-            query = f"SELECT refer_id FROM `data1` WHERE user_id = {user_id}"
+            query = f"SELECT refer_id FROM `data6` WHERE user_id = {user_id}"
             cursor.execute(query)
 
             response = cursor.fetchone()
@@ -44,7 +44,7 @@ class Data:
     def PrintAllData(self):
         with self.connection.cursor() as cursor:
             print("#" * 20)
-            select_all_rows = "SELECT * FROM `data1`"
+            select_all_rows = "SELECT * FROM `data6`"
             cursor.execute(select_all_rows)
 
             rows = cursor.fetchall()
@@ -54,7 +54,7 @@ class Data:
 
     def GetReferrals(self, user_id):
         with self.connection.cursor() as cursor:
-            select_all_rows = f"SELECT user_id FROM `data1` WHERE refer_id = {user_id}"
+            select_all_rows = f"SELECT user_id FROM `data6` WHERE refer_id = {user_id}"
             cursor.execute(select_all_rows)
 
             rows = cursor.fetchall()
@@ -63,7 +63,7 @@ class Data:
         
     def GetReferralsCount(self, user_id):
         with self.connection.cursor() as cursor:
-            select_all_rows = f"SELECT user_id FROM `data1` WHERE refer_id = {user_id}"
+            select_all_rows = f"SELECT user_id FROM `data6` WHERE refer_id = {user_id}"
             cursor.execute(select_all_rows)
 
             rows = cursor.fetchall()
@@ -73,7 +73,7 @@ class Data:
     def DeleteAll(self):
         try:
             with self.connection.cursor() as cursor:
-                insert_query = f"DELETE FROM `data1` WHERE user_id = "
+                insert_query = f"DELETE * FROM `data6`"
                 cursor.execute(insert_query)
                 self.connection.commit()
                 self.connection.close()
@@ -83,3 +83,4 @@ class Data:
             return False
 
 data = Data()
+data.PrintAllData()
