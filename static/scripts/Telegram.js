@@ -19,6 +19,10 @@ function auth() {
         userReferID = 0;
     }
 
+    if (userUsername == undefined || userUsername == null || userUsername || '') {
+        userUsername = `user${userTelegamID}`
+    }
+
     httpRequest = new XMLHttpRequest();
     httpRequest.open('POST', 'auth');
     var data = JSON.stringify({"user_id": userTelegamID, "refer_id": userReferID, "username": userUsername});
