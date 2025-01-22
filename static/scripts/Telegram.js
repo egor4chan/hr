@@ -1,13 +1,11 @@
 
 var WebApp = window.Telegram.WebApp;
-alert('Webapp is working')
+alert('Webapp success!')
 var userTelegamID = WebApp.initDataUnsafe.user.id;
-alert('UID is working: ', userTelegamID)
+alert(`UID is working: ${userTelegamID}`)
 //var userReferID = WebApp.initDataUnsafe.start_param;
-var personalLink = 'https://t.me/share/url?url=t.me/hopterbigbot?startapp=', userTelegamID;
-alert('Perslink is working: ', personalLink)
-
-document.getElementById('invite').setAttribute('href', personalLink)
+var personalLink = `https://t.me/share/url?url=t.me/hopterbigbot?startapp=${userTelegamID}`;
+alert(`Perslink is working: ${personalLink}`)
 
 function vibration() {
     var WebApp = window.Telegram.WebApp;
