@@ -6,6 +6,8 @@ var personalLink = 'https://t.me/share/url?url=t.me/hopterbigbot?startapp=' + us
 
 document.getElementById('invite').setAttribute('href', personalLink)
 
+alert(personalLink)
+
 function vibration() {
     var WebApp = window.Telegram.WebApp;
     WebApp.HapticFeedback.impactOccurred('light');
