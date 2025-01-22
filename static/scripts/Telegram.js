@@ -1,9 +1,11 @@
-alert('s')
-var WebApp = window.Telegram.WebApp;
 
+var WebApp = window.Telegram.WebApp;
+alert('Webapp is working')
 var userTelegamID = WebApp.initDataUnsafe.user.id;
+alert('UID is working: ', userTelegamID)
 //var userReferID = WebApp.initDataUnsafe.start_param;
-var personalLink = 'https://t.me/share/url?url=t.me/hopterbigbot?startapp=' + userTelegamID;
+var personalLink = 'https://t.me/share/url?url=t.me/hopterbigbot?startapp=', userTelegamID;
+alert('Perslink is working: ', personalLink)
 
 document.getElementById('invite').setAttribute('href', personalLink)
 
