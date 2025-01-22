@@ -1,15 +1,15 @@
-var WebApp = window.Telegram.WebApp;
-var userTelegamID = WebApp.initDataUnsafe.user.id;
+//var WebApp = window.Telegram.WebApp;
+//var userTelegamID = WebApp.initDataUnsafe.user.id;
 let userFriendsList = []
 
-function createFriendBlock(id) {;
+function createFriendBlock(id, username='user') {;
 
     let block = document.createElement('div')
     block.setAttribute('class', 'friend');
 
     let userNickname = document.createElement('span');
     userNickname.setAttribute('class', 'user-nickname')
-    userNickname.innerHTML = id;
+    userNickname.innerHTML = username;
 
     let userID = document.createElement('span');
     userID.setAttribute('class', 'user-id')
@@ -35,14 +35,15 @@ function createNothingBlock() {
 function getUserFriends() {
     httpRequest = new XMLHttpRequest();
     httpRequest.open('POST', 'getfriends');
-    var data = JSON.stringify({"user_id": userTelegamID});
+    var data = JSON.stringify({"user_id": 5247769901});
 
     httpRequest.send(data) 
      
     httpRequest.onprogress = function() {
         response = httpRequest.response;
-        result = JSON.parse(response);
-        result_len = JSON.parse(response).length;
+        result = JSON.parse(response)[0];
+        username = JSON.parse(response)[1];
+        result_len = JSON.parse(response)[0].length;
 
         if (result_len != 0) {
             document.getElementById('herewillbe').remove()
@@ -50,7 +51,7 @@ function getUserFriends() {
         
         for (let i=0; i!=result_len; i++) {
             userFriendsList.push(result[i].user_id) // result[i].user_id ==> user_id
-            createFriendBlock(result[i].user_id)
+            createFriendBlock(result[i].user_id, username[i].username)
         }
        // alert(userFriendsList)
     } 

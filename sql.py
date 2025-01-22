@@ -52,15 +52,24 @@ class Data:
                 print(row)
             print("#" * 20)
 
+    def GetReferralsNicknames(self, user_id):
+        with self.connection.cursor() as cursor:
+            select_all_rows = f"SELECT username FROM `data6` WHERE refer_id = {user_id}"
+            cursor.execute(select_all_rows)
+
+            rows = cursor.fetchall()
+
+            return rows
+
+
     def GetReferrals(self, user_id):
         with self.connection.cursor() as cursor:
             select_all_rows = f"SELECT user_id FROM `data6` WHERE refer_id = {user_id}"
             cursor.execute(select_all_rows)
 
             rows = cursor.fetchall()
-
             return rows
-        
+    
     def GetReferralsCount(self, user_id):
         with self.connection.cursor() as cursor:
             select_all_rows = f"SELECT user_id FROM `data6` WHERE refer_id = {user_id}"
@@ -83,4 +92,5 @@ class Data:
             return False
 
 data = Data()
-data.PrintAllData()
+print(data.PrintAllData())
+

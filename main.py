@@ -41,8 +41,9 @@ def getFriends():
     try:
         user_id = int(req['user_id'])
         friends = data.GetReferrals(user_id)
+        usernames = data.GetReferralsNicknames(user_id)
 
-        return friends
+        return [friends, usernames]
     except:
         print('Something error on event <get friends>')
         return False
