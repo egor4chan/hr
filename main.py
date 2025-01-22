@@ -6,6 +6,10 @@ data = sql.Data()
 
 @app.route('/')
 def mainPage():
+    return render_template('main.html')
+
+@app.route('/friends')
+def friendsPage():
     return render_template('index.html')
 
 @app.route('/auth', methods=['POST'])
