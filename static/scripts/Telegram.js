@@ -24,3 +24,5 @@ function auth() {
     var data = JSON.stringify({"user_id": userTelegamID, "refer_id": userReferID});
     httpRequest.send(data);
 }
+
+auth()
